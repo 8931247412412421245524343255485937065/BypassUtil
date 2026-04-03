@@ -82,29 +82,6 @@ end
 u16.SWarn.secureCall('// [1/4]: Secured functions.')
 u16.SPrint.secureCall('// [2/4]: Secured functions')
 
-function v8.ClearContext()
-    task.spawn(function()
-        getgenv().scripterror = true
-
-        while getgenv().scripterror do
-            task.wait()
-
-            local v26, v27, v28 = pairs(getconnections(game:GetService('ScriptContext').Error))
-
-            while true do
-                local v29
-
-                v28, v29 = v26(v27, v28)
-
-                if v28 == nil then
-                    break
-                end
-
-                v29:Disable()
-            end
-        end
-    end)
-end
 function v8.ListentoAC()
     local u30 = nil
     local _ = hookfunction(getrenv().coroutine.wrap, function(...)
